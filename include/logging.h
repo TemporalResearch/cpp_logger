@@ -4,26 +4,32 @@
     #include <stdexcept>
     #include <iostream>
 
-    #if defined(DEBUG)
-        #define DEBUG_LOG(x) std::cout << "DEBUG:" << x << std::endl
+    #if defined(TRACE)
+        #define TRACE_LOG(x) std::cout << "TRACE '" << __FILE__ << "': " << x << std::endl
+    #else
+        #define TRACE_LOG(x) {}
+    #endif
+
+#if defined(DEBUG)
+        #define DEBUG_LOG(x) std::cout << "DEBUG '" << __FILE__ << "': " << x << std::endl
     #else
         #define DEBUG_LOG(x) {}
     #endif
 
     #if defined(INFO) || defined(DEBUG)
-        #define INFO_LOG(x) std::cout << "INFO: " << x << std::endl
+        #define INFO_LOG(x) std::cout << "INFO '" << __FILE__ << "': " << x << std::endl
     #else
         #define INFO_LOG(x) {}
     #endif
 
     #if defined(WARN) || defined(INFO) || defined(DEBUG)
-        #define WARN_LOG(x) std::cout << "WARN: " << x << std::endl
+        #define WARN_LOG(x) std::cout << "WARN '" << __FILE__ << "': " << x << std::endl
     #else
         #define WARN_LOG(x) {}
     #endif
 
     #if defined(ERROR) || defined(WARN) || defined(INFO) || defined(DEBUG)
-        #define ERROR_LOG(x) std::cout << "ERROR: " << x << std::endl
+        #define ERROR_LOG(x) std::cout << "ERROR '" << __FILE__ << "': " << x << std::endl
     #else
         #define ERROR_LOG(x) {}
     #endif
