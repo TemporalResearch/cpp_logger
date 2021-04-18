@@ -1,3 +1,5 @@
-add_library(cpp_logger INTERFACE)
-target_include_directories(cpp_logger
-        INTERFACE include)
+cmake_minimum_required(VERSION 3.17)
+
+set(CMAKE_CXX_STANDARD 20)
+
+project(libcpp_logger)
